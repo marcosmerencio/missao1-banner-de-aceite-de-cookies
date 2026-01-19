@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner de Aceite de Cookies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main>
+        <div id="cookie-banner" class="cookie-container">
+            <div class="cookie-content">
+                <p>
+                    Nós utilizamos cookies para melhorar sua experiência. 
+                    Ao continuar, você concorda com nossa <a href="javascript:void(0)" id="open-privacy">Política de Privacidade</a>.
+                </p>
+                <button id="accept-cookies" class="btn-accept">Aceitar</button>
+            </div>
+        </div>
+
+        <div id="privacy-modal" class="modal-overlay">
+            <div class="modal-card">
+                <header class="modal-header">
+                    <h2>Política de Privacidade</h2>
+                    <button id="close-privacy" class="btn-close-x" aria-label="Fechar">&times;</button>
+                </header>
+                <div class="modal-body">
+                    <p><strong class="highlight">1. Coleta de Dados:</strong> Coletamos informações básicas para melhorar sua navegação e segurança.</p>
+                    <p><strong class="highlight">2. Uso de Cookies:</strong> Utilizamos cookies técnicos para manter sua sessão e analíticos para melhorar nosso serviço.</p>
+                    <p><strong class="highlight">3. Seus Direitos:</strong> Você possui o direito de acessar, retificar ou excluir seus dados pessoais a qualquer momento.</p>
+                    <p>Esta política segue as diretrizes da LGPD (Lei Geral de Proteção de Dados).</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

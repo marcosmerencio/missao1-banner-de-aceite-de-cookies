@@ -1,0 +1,244 @@
+:root {
+    --bg: #0b0f1a;
+    --card: #161b2c;
+    --primary: #4f46e5;
+    --success: #10b981;
+    --error: #ff4d4d;
+    --text: #ffffff;
+    --text-dim: #94a3b8;
+    --input-bg: #1f2937;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* --- BANNER DE COOKIES --- */
+.cookie-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--card);
+    border-top: 1px solid #2d3748;
+    box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    /* Transição suave para aparecer/desaparecer */
+    transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+}
+
+/* Estado oculto (JS) */
+.cookie-container.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.cookie-content p {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.cookie-content a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.cookie-content a:hover {
+    text-decoration: underline;
+}
+
+/* Botão Aceitar estilizado como seu Primary Button */
+.btn-accept {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-accept:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+.btn-accept:active {
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .btn-accept {
+        width: 100%;
+    }
+}
+
+
+/* --- MODAL HEADER & CLOSE BUTTON --- */
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Necessário para posicionar o X */
+    margin-bottom: 2rem;
+}
+
+.modal-header h2 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Estilização do X */
+.btn-close-x {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--input-bg);
+    color: var(--text-dim);
+    border: 1px solid #2d3748;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.btn-close-x:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: rotate(90deg);
+    /* Efeito visual moderno ao passar o mouse */
+}
+
+/* Ajuste no Modal Card para acomodar o X */
+.modal-card {
+    background: var(--card);
+    width: 100%;
+    max-width: 550px;
+    max-height: 90vh;
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 20px var(--primary), inset 0 0 10px rgba(79, 70, 229, 0.2);
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.modal-body {
+    overflow-y: auto;
+    max-height: calc(90vh - 120px);
+    /* Garante que o corpo role se o conteúdo for longo */
+}
+
+.modal-body p {
+    margin-bottom: 1.5rem;
+}
+
+.modal-body p:last-child {
+    margin-bottom: 0;
+}
+
+.highlight {
+    color: var(--primary);
+}
+
+/* Responsividade para o X no Mobile */
+@media (max-width: 480px) {
+    .modal-card {
+        padding: 1.5rem;
+        /* Reduz padding em telas muito pequenas */
+    }
+
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .btn-close-x {
+        top: -5px;
+        right: -5px;
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+    }
+}
+
+/* --- MODAL OVERLAY --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 2000;
+
+    /* Estado inicial: oculto */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Estado visível do Modal (JS) */
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- ANIMATION --- */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
