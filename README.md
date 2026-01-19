@@ -40,7 +40,7 @@ Acessibilidade: Implementação de aria-label no botão de fechar do modal e sup
 Para testar o projeto localmente, siga os passos abaixo:
 
 Clone o repositório:
-git clone https://github.com/seu-usuario/missao-banner-cookies.git
+git clone https://github.com/marcosmerencio/missao1-banner-de-aceite-de-cookies.git
 
 Acesse a pasta do projeto.
 
