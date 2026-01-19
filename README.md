@@ -3,6 +3,7 @@
 Uma interface essencial de conformidade e privacidade que solicita o consentimento do usuário para o uso de cookies. O projeto inclui um banner responsivo no rodapé... 
 
 
+
 <img width="1867" height="451" alt="banner-aceite-de-cookies-prvacidade" src="https://github.com/user-attachments/assets/82e0554a-1342-4a88-b348-6c5d515b9704" />
 ...e um modal detalhado para a Política de Privacidade, garantindo transparência e uma boa experiência de usuário (UX).
 
